@@ -24,5 +24,5 @@
     "ios.browser": "wdio config/wdio.ios.browser.conf.ts",
     "reports": "allure generate allure-results --clean && allure open"
   },
-  "author": "Rija William Ralitera (https://williamralitera.com/)"
+  "author": "Rija William Ralitera (https://www.linkedin.com/in/rija-william-ralitera/)"
 }
