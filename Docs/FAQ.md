@@ -42,3 +42,31 @@ Si vous rencontrez une erreur lors du lancement de vos tests sur un navigateur d
 
 ### Solution
 Pour résoudre ce problème, vous devez changer la version d'Android de votre émulateur à la version 12 en raison d'un bug sur Android 13. Vous pouvez trouver plus d'informations sur ce bug [ici](https://github.com/appium/appium/issues/17492).
+
+## Erreur d'execution
+```bash
+exports is not defined in ES module scope
+ReferenceError: exports is not defined in ES module scope
+```
+### Solution
+
+- Supprimer cette ligne du fichier `package.json` :
+```bash
+"type": "module",
+```
+- Ajouter cette ligne du fichier `tsconfig.json` :
+```bash
+"module": "CommonJS",
+```
+## Erreur d'execution no files found
+```bash
+ERROR @wdio/cli:launcher: No specs found to run, exiting with failure
+```
+### Solution
+
+- Vérifier le mapping des chemins des specs assignés dans les fichiers de configurations, exemple pour `wdio.android.browser.conf.ts` :
+```bash
+config.specs = [
+    '../tests/specs/**/browser*.spec.ts',
+];
+```

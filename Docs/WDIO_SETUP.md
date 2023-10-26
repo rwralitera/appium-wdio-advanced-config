@@ -83,17 +83,47 @@ Pour bénéficier des configurations recommandées d'ESLint et de `eslint-plugin
 - Pour pouvoir faire quelques tests d'applications natives, récupérer les fichiers des applications mobiles pour Android et pour iOS sur ce [lien](https://github.com/webdriverio/native-demo-app/releases)
 - Créer un dossier `apps` à la racine de votre projet et coller les fichiers à l'intérrieur
 
+## Gestion des configurations de lancement des tests
+- Pour gérer plus efficacement les fichiers de configuration, créez un dossier `config` à la racine de votre projet.
+- Créez ou récupérez les fichiers de configurations dont voici les explications: 
+    - `wdio.shared.conf.ts`: c'est le fichier de configuration principal de webdriverio avec seulement quelques options qui sont configurés, comme par exemple la `baseUrl` qui sera utilisé pour tous les tests
+    - `wdio.shared.local.appium.conf.ts`: c'est le fichier de configuration qui va permettre de démarrer automatisauement le serveur appium au lancement des tests avec les options prédéfinis
+    - `wdio.android.app.conf.ts`: c'est le fichier de configuration pour lancer les tests app natives sur android
+    - `wdio.ios.app.conf.ts`: c'est le fichier de configuration pour lancer les tests app natives sur iOS
+    - `wdio.android.browser.conf.ts`: c'est le fichier de configuration pour lancer les tests chrome sur android
+    - `wdio.ios.browser.conf.ts`: c'est le fichier de configuration pour lancer les tests safari sur iOS
+- Mettez à jour le fichier de configuration typescript `tsconfig.json`pour qu'il prenne en compte les nouveaux fichiers de configuration:
 
-- [ ] Gérer plus efficacement les fichiers de configuration.
-    - [ ] Gestion des tests avec Saucelabs.
-    - [ ] Gestion des tests avec BrowserStack.
-    - [ ] Gestion des tests par device.
-    - [ ] Gestion des tests par navigateur.
+```json
+"include": [
+    "./config/**/*.ts"
+]
+```
+
+## Récupérer les tests
+Pour pouvoir lancer rapidement une execution, j'ai récupéré des tests par défaut associés aux fichiers apk et app dans ce [repository](https://github.com/webdriverio/appium-boilerplate/tree/main/tests)
 
 ## Scripts de Lancement
-- [ ] Maîtriser la gestion des scripts de lancement des tests.
-    - [ ] Par type de test.
-    - [ ] Par device.
+Etant donné qu'il y a des tests par device (andoid et ios) et aussi des tests par types d'application (browser et app native), on va créer des scripts de lancement pour chacun. Pour cela, dans le fichier package.json, on va rajouter les scripts:
+
+```bash
+"scripts": {
+    "android.app": "wdio config/wdio.android.app.conf.ts",
+    "android.browser": "wdio config/wdio.android.browser.conf.ts",
+    "ios.app": "wdio config/wdio.ios.app.conf.ts",
+    "ios.browser": "wdio config/wdio.ios.browser.conf.ts"
+  },
+```
+
+De ce fait, on va pouvoir lancer chacun des tests avec les commandes (à condition d'avoir lancer les simulateurs android et ios avant les tests):
+
+```bash
+    npm run android.app
+    npm run android.browser
+    npm run ios.app
+    npm run ios.browser
+  },
+```
 
 ## Rapports de Tests
 - [ ] Configurer des rapports de tests.

@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "moduleResolution": "node",
-        "module": "ESNext",
+        "module": "CommonJS",
         "target": "es2022",
         "lib": [
             "es2022",
@@ -25,7 +25,7 @@
         "noFallthroughCasesInSwitch": true
     },
     "include": [
-        "test",
-        "wdio.conf.ts"
+        "./config/**/*.ts",
+        "./tests/**/*.ts"
     ]
 }

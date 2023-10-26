@@ -1,6 +1,5 @@
 {
   "name": "appium-install-from-scratch",
-  "type": "module",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.9.0",
     "@typescript-eslint/parser": "^6.9.0",
@@ -16,7 +15,10 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "wdio": "wdio run ./wdio.conf.ts"
+    "android.app": "wdio config/wdio.android.app.conf.ts",
+    "android.browser": "wdio config/wdio.android.browser.conf.ts",
+    "ios.app": "wdio config/wdio.ios.app.conf.ts",
+    "ios.browser": "wdio config/wdio.ios.browser.conf.ts"
   },
   "author": "Rija William Ralitera (https://williamralitera.com/)"
 }
