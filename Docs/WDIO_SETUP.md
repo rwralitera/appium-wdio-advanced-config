@@ -42,14 +42,17 @@ npm install eslint-plugin-wdio --save-dev
 
 Ce plugin propose une configuration recommandée qui impose de bonnes pratiques.
 
-Pour activer cette configuration, rajouter dans le fichier de configuration `.eslintrc` :
+Pour bénéficier des configurations recommandées d'ESLint et de `eslint-plugin-wdio`, rajouter dans le fichier de configuration `.eslintrc` :
 
 ```json
 {
-    "plugins": ["wdio"],
+    "plugins": [
+        'wdio',
+        '@typescript-eslint'],
     "extends": [
-        "eslint:recommended",
-        "plugin:wdio/recommended"
+        'eslint:recommended',
+        'plugin:@typescript-eslint/recommended',
+        'plugin:wdio/recommended'
     ],
     "rules": {
         'semi': ['error', 'always'],
@@ -76,37 +79,10 @@ Pour activer cette configuration, rajouter dans le fichier de configuration `.es
     },
 }
 ```
+## Applications natives Android et iOS
+- Pour pouvoir faire quelques tests d'applications natives, récupérer les fichiers des applications mobiles pour Android et pour iOS sur ce [lien](https://github.com/webdriverio/native-demo-app/releases)
+- Créer un dossier `apps` à la racine de votre projet et coller les fichiers à l'intérrieur
 
-Add some rules on the .eslintrc.cjs:
-
-
-```json
-{
-        semi: ['error', 'always'],
-        indent: [2, 4],
-
-        'no-multiple-empty-lines': [ 2, { 'max': 1, 'maxEOF': 1 } ],
-        'array-bracket-spacing': [ 'error', 'never' ],
-        'brace-style': [ 'error', '1tbs', { allowSingleLine: true } ],
-        camelcase: [ 'error', { properties: 'never' } ],
-        'comma-spacing': [ 'error', { before: false, after: true } ],
-        'no-lonely-if': 'error',
-        'no-else-return': 'error',
-        'no-tabs': 'error',
-        'no-trailing-spaces': [ 'error', {
-            skipBlankLines: false,
-            ignoreComments: false,
-        } ],
-        quotes: [ 'error', 'single', { avoidEscape: true } ],
-        'unicode-bom': [ 'error', 'never' ],
-        'object-curly-spacing': [ 'error', 'always' ],
-        'keyword-spacing': [ 'error' ],
-        'require-atomic-updates': 0,
-        'no-unexpected-multiline': 0,
-    },
-    ```
-
-Cela vous permettra de bénéficier des configurations recommandées d'ESLint et de `eslint-plugin-wdio`.
 
 - [ ] Gérer plus efficacement les fichiers de configuration.
     - [ ] Gestion des tests avec Saucelabs.
