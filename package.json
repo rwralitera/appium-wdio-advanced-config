@@ -20,7 +20,7 @@
     "android.browser": "wdio config/wdio.android.browser.conf.ts",
     "ios.app": "wdio config/wdio.ios.app.conf.ts",
     "ios.browser": "wdio config/wdio.ios.browser.conf.ts",
-    "reports": "allure generate allure-results && allure open"
+    "reports": "allure generate allure-results --clean && allure open"
   },
   "author": "Rija William Ralitera (https://williamralitera.com/)"
 }
