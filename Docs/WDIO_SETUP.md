@@ -127,8 +127,9 @@ De ce fait, on va pouvoir lancer chacun des tests avec les commandes (à conditi
 
 ## Rapports de Tests
 - [ ] Configurer des rapports de tests.
+    - [ ] Rapports au format [HTML](https://www.npmjs.com/package/@wdio/allure-reporter)
     - [ ] Intégration avec des outils tiers (Slack, Teams, etc)
-    - [ ] Rapports au format HTML.
+
 
 ## Fonctionnalités d'Appium
 - [ ] Approfondir la connaissance des capabilities d'Appium.
