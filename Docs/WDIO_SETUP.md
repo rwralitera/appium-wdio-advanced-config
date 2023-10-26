@@ -17,21 +17,17 @@ npm i eslint --save-dev
 Lancer le wizard de configuration d'eslint:
 
 ```bash
-npm init @eslint/config
-
-    Need to install the following packages:
-      @eslint/create-config
-    Ok to proceed? (y) y
-    ✔ How would you like to use ESLint? · style
-    ✔ What type of modules does your project use? · commonjs
-    ✔ Which framework does your project use? · none
-    ✔ Does your project use TypeScript? · Yes
-    ✔ Where does your code run? · browser, node
-    ✔ How would you like to define a style for your project? · guide
-    ✔ Which style guide do you want to follow? · standard-with-typescript
-    ✔ What format do you want your config file to be in? · JavaScript
-    ✔ Would you like to install them now? · Yes
-    ✔ Which package manager do you want to use? · npm
+➜  appium-wdio-advanced-config git:(main) ✗ npm init @eslint/config
+✔ How would you like to use ESLint? · problems
+✔ What type of modules does your project use? · commonjs
+✔ Which framework does your project use? · none
+✔ Does your project use TypeScript? · No / Yes
+✔ Where does your code run? · browser
+✔ What format do you want your config file to be in? · JavaScript
+The config that you've selected requires the following dependencies:
+@typescript-eslint/eslint-plugin@latest @typescript-eslint/parser@latest
+✔ Would you like to install them now? · No / Yes
+✔ Which package manager do you want to use? · npm
 ```
 
 Ensuite, installez `eslint-plugin-wdio`:
@@ -46,7 +42,7 @@ npm install eslint-plugin-wdio --save-dev
 
 Ce plugin propose une configuration recommandée qui impose de bonnes pratiques.
 
-Pour activer cette configuration, utilisez la propriété "extends" dans votre fichier de configuration `.eslintrc` :
+Pour activer cette configuration, rajouter dans le fichier de configuration `.eslintrc` :
 
 ```json
 {
@@ -54,9 +50,61 @@ Pour activer cette configuration, utilisez la propriété "extends" dans votre f
     "extends": [
         "eslint:recommended",
         "plugin:wdio/recommended"
-    ]
+    ],
+    "rules": {
+        'semi': ['error', 'always'],
+        'indent': [2, 4],
+
+        'no-multiple-empty-lines': [2, { 'max': 1, 'maxEOF': 1 }],
+        'array-bracket-spacing': ['error', 'never'],
+        'brace-style': ['error', '1tbs', { allowSingleLine: true }],
+        'camelcase': ['error', { properties: 'never' }],
+        'comma-spacing': ['error', { before: false, after: true }],
+        'no-lonely-if': 'error',
+        'no-else-return': 'error',
+        'no-tabs': 'error',
+        'no-trailing-spaces': ['error', {
+            'skipBlankLines': false,
+            'ignoreComments': false,
+        }],
+        'quotes': ['error', 'single', { avoidEscape: true }],
+        'unicode-bom': ['error', 'never'],
+        'object-curly-spacing': ['error', 'always'],
+        'keyword-spacing': ['error'],
+        'require-atomic-updates': 0,
+        'no-unexpected-multiline': 0,
+    },
 }
 ```
+
+Add some rules on the .eslintrc.cjs:
+
+
+```json
+{
+        semi: ['error', 'always'],
+        indent: [2, 4],
+
+        'no-multiple-empty-lines': [ 2, { 'max': 1, 'maxEOF': 1 } ],
+        'array-bracket-spacing': [ 'error', 'never' ],
+        'brace-style': [ 'error', '1tbs', { allowSingleLine: true } ],
+        camelcase: [ 'error', { properties: 'never' } ],
+        'comma-spacing': [ 'error', { before: false, after: true } ],
+        'no-lonely-if': 'error',
+        'no-else-return': 'error',
+        'no-tabs': 'error',
+        'no-trailing-spaces': [ 'error', {
+            skipBlankLines: false,
+            ignoreComments: false,
+        } ],
+        quotes: [ 'error', 'single', { avoidEscape: true } ],
+        'unicode-bom': [ 'error', 'never' ],
+        'object-curly-spacing': [ 'error', 'always' ],
+        'keyword-spacing': [ 'error' ],
+        'require-atomic-updates': 0,
+        'no-unexpected-multiline': 0,
+    },
+    ```
 
 Cela vous permettra de bénéficier des configurations recommandées d'ESLint et de `eslint-plugin-wdio`.
 
